@@ -46,6 +46,8 @@ public class GridDropController extends AbsolutePositionDropController{
 		top = Math.round((float) top / gridY) * gridY;
 		top = Math.max(0,top);
 		
+		top += top/10;
+		
 		//debug
 		DebugPanel.getInstance().vpan.clear();
 		DebugPanel.getInstance().vpan.add(new Label("left = "+left));
@@ -54,7 +56,7 @@ public class GridDropController extends AbsolutePositionDropController{
 		
 		if( widget instanceof TeachingTreeWidget){
 			TeachingSeanceWidget l = new TeachingSeanceWidget("hello");
-			l.setHeight((gridY*8)+"px");
+			l.setHeight((gridY*8+8)+"px");
 			l.setWidth((gridX-1)+"px");
 			l.setStyleName("teaching-cell");
 			l.setHorizontalAlignment(Label.ALIGN_CENTER);
@@ -78,24 +80,17 @@ public class GridDropController extends AbsolutePositionDropController{
 
 		for (Draggable draggable : draggableList) {
 			
-			//debug
-			DebugPanel.getInstance().vpan.clear();
-			DebugPanel.getInstance().vpan.add(new Label("contextDesiredX = "+context.desiredDraggableX));
-			DebugPanel.getInstance().vpan.add(new Label("contextDesiredY = "+context.desiredDraggableY));
-			//end debug
-			
 			draggable.desiredX = context.desiredDraggableX - dropTargetOffsetX + draggable.relativeX;
 			draggable.desiredY = context.desiredDraggableY - dropTargetOffsetY + draggable.relativeY;
 			
 			//debug
+			DebugPanel.getInstance().vpan.clear();
 			DebugPanel.getInstance().vpan.add(new Label("desiredX = "+draggable.desiredX));
 			DebugPanel.getInstance().vpan.add(new Label("desiredY = "+draggable.desiredY));
-			DebugPanel.getInstance().vpan.add(new Label("gridX = "+gridX));
-			DebugPanel.getInstance().vpan.add(new Label("gridY = "+gridY));
 			//end debug
+			
+			draggable.desiredY -= draggable.desiredY/10;
 
-//			draggable.desiredX = Math.max(0, Math.min(draggable.desiredX, dropTargetClientWidth - draggable.offsetWidth));
-//			draggable.desiredY = Math.max(0, Math.min(draggable.desiredY, dropTargetClientHeight - draggable.offsetHeight));
 			draggable.desiredX = (int)Math.floor((double) draggable.desiredX / gridX) * gridX;
 			draggable.desiredX = Math.max(0, draggable.desiredX);
 			draggable.desiredY = (int)Math.round((double) draggable.desiredY / gridY) * gridY;
@@ -106,10 +101,11 @@ public class GridDropController extends AbsolutePositionDropController{
 			DebugPanel.getInstance().vpan.add(new Label("top = "+draggable.desiredY));
 			//end debug
 
+			int postionerY = draggable.desiredY + (draggable.desiredY/10);
 			
-			draggable.positioner.setWidth(gridX+"px");
-			draggable.positioner.setHeight("80px");
-			dropTarget.add(draggable.positioner, draggable.desiredX, draggable.desiredY);
+			draggable.positioner.setWidth((gridX-1)+"px");
+			draggable.positioner.setHeight((gridY*8+8)+"px");
+			dropTarget.add(draggable.positioner, draggable.desiredX, postionerY);
 		}
 	}
 	

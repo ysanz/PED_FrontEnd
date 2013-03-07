@@ -30,10 +30,6 @@ public class ScheduleGridPanel extends Composite {
 		mainPan.getFlexCellFormatter().setHeight(1, 1, schedGrid.getOffsetHeight()+"px");
 		mainPan.getFlexCellFormatter().setWidth(1, 1, "800px");
 		mainPan.getFlexCellFormatter().setRowSpan(1, 1, 11);
-		for(int i=1; i<=11; i++){
-			Label label = new Label((i+7)+"h");
-			mainPan.setWidget(i, 0, label);
-		}
 		
 //		dropController.setGridX(800/5); // TODO: use variables
 //		dropController.setGridY(10);
