@@ -299,23 +299,23 @@ a:visited {
 
 .major-time-interval {
         display: block;
-        height: 24px;
-        _height: 25px;
+        height: 9px;
+        _height: 10px;
         /*background: #FFFFCC;*/
         border-top: 1px solid #000000;
-        border-left: 1px solid #000000;
-        border-right: 1px solid #000000;
+        /*border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
         width: 100%;
 }
 
 .minor-time-interval {
         display: block;
-        height: 24px;
-        _height: 25px;
+        height: 9px;
+        _height: 10px;
         /*background: #FFFFCC;*/
         border-top: 1px dotted #000000;
-        border-left: 1px solid #000000;
-        border-right: 1px solid #000000;
+        /*border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
         width: 100%;
 }
 

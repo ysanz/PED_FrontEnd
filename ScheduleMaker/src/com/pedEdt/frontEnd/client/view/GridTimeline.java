@@ -22,7 +22,7 @@ public class GridTimeline extends Composite {
 		timelinePanel.setCellSpacing(0);
 		timelinePanel.setBorderWidth(0);
 		initWidget(timelinePanel);
-		int hourHeight = intervalsPerHour*pixelsPerInterval -2;
+		int hourHeight = intervalsPerHour*pixelsPerInterval;
         
 		for(int i=0; i < HOURS_IN_DAY; i++){
         	Label hourLbl = new Label((dayStartAt+i)+"h");

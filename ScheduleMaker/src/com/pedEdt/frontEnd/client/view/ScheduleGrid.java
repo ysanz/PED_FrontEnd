@@ -14,7 +14,8 @@ public class ScheduleGrid extends Composite {
     private final int intervalsPerHour = 6; // 10 minutes
     private final int intervalSize = 10; //px
     
-    private final int GRID_WIDTH = 800;
+    private final float GRID_WIDTH = 100;
+    private final String WIDTH_TYPE = "%";
     private final int GRID_HEIGHT = intervalsPerHour*intervalSize*HOURS_PER_DAY;
 
 	public ScheduleGrid() {
@@ -51,7 +52,7 @@ public class ScheduleGrid extends Composite {
             SimplePanel dayPanel = new SimplePanel();
             dayPanel.setStyleName("day-separator");
             grid.add(dayPanel);
-            DOM.setStyleAttribute(dayPanel.getElement(), "left", dayLeft + "px");
+            DOM.setStyleAttribute(dayPanel.getElement(), "left", dayLeft + WIDTH_TYPE);
         }
 	}
 
@@ -65,13 +66,6 @@ public class ScheduleGrid extends Composite {
 	
 	public int getNbIntervals(){
 		return intervalsPerHour * HOURS_PER_DAY;
-	}
-	
-	public int getWidth(){
-		return GRID_WIDTH;
-	}
-	public int getHeight(){
-		return GRID_HEIGHT;
 	}
 		
 }

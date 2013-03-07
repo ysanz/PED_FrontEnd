@@ -34,11 +34,12 @@ public class ScheduleMaker implements EntryPoint {
 	public void onModuleLoad() {
 		hpan = new HorizontalPanel();
 		schedGridPan = new ScheduleGridPanel();
-		schedTree = new ScheduleTree();
 		
 		ScheduleDragController.createInstance(schedGridPan.schedGrid.getDroppableArea(), false);
 		ScheduleDragController.getInstance().registerDropController(schedGridPan.getDropController());
 		ScheduleDragController.getInstance().setBehaviorDragProxy(true);
+		
+		schedTree = new ScheduleTree();
 		
 
 		hpan.add(schedTree);
