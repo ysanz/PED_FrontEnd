@@ -70,9 +70,11 @@ public class Module implements java.io.Serializable {
 	
 	public void addTeaching(Teaching teaching) {
 		this.teachings.add(teaching);
+		teaching.setModule(this);
 	}
 	
 	public void removeTeaching(Teaching teaching) {
-		this.teachings.remove(teaching);
+		if( this.teachings.remove(teaching) )
+			teaching.setModule(null);
 	}
 }

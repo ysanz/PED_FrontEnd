@@ -13,15 +13,20 @@ public class TeachingSeanceWidget extends Composite{
 	protected Label label;
 	
 	protected Teaching teaching;
+	protected int seanceTimestamp;
 	protected int posH; // [0-4] horizontal position on the grid
 	protected int posV; // [0-65] vertical position on the grid
 	
-	public TeachingSeanceWidget(String text){
+	public TeachingSeanceWidget(Teaching teaching, int posH, int posV){
+		this.teaching = teaching;
+		this.posH = posH;
+		this.posV = posV;
+		
 		mainPanel = new VerticalPanel();
-		headerPanel = new Label(text);
+		headerPanel = new Label(teaching.getModule().getTitle()+"-"+teaching.getType());
 		headerPanel.setHeight("15px");
 		headerPanel.setWidth("100%");
-		headerPanel.setStyleName("test-header");
+		headerPanel.setStyleName("teaching-cell-header");
 		headerPanel.setHorizontalAlignment(Label.ALIGN_CENTER);
 		
 		label = new Label("infos complémentaires");
@@ -32,15 +37,8 @@ public class TeachingSeanceWidget extends Composite{
 		mainPanel.add(label);
 		
 		initWidget(mainPanel);
-		this.setStyleName("teaching-cell");
+		setStyleName("teaching-cell");
 		ScheduleDragController.getInstance().makeDraggable(this, headerPanel);
-	}
-	
-	public TeachingSeanceWidget(Teaching teaching, int posH, int posV){
-		this(teaching.getModule()+" "+teaching.getType());
-		this.teaching = teaching;
-		this.posH = posH;
-		this.posV = posV;
 	}
 	
 	public void setPosH(int newPosH){

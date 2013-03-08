@@ -10,7 +10,7 @@ public class ScheduleGridPanel extends Composite {
 	protected FlexTable mainPan;
 	protected GridDropController dropController;
 	protected GridDaysHeader gridDaysHdr;
-	public ScheduleGrid schedGrid;
+	public Grid schedGrid;
 //	public GridTimeline schedTimeline;
 
 	public ScheduleGridPanel() {
@@ -18,7 +18,7 @@ public class ScheduleGridPanel extends Composite {
 		mainPan.setBorderWidth(1);
 		mainPan.setCellSpacing(0);
 		mainPan.setCellPadding(0);
-		schedGrid = new ScheduleGrid();
+		schedGrid = new Grid();
 //		schedTimeline = new GridTimeline();
 		dropController = new GridDropController(schedGrid.getDroppableArea());
 		gridDaysHdr = new GridDaysHeader();

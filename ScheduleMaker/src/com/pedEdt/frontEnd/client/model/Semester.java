@@ -60,9 +60,11 @@ public class Semester implements java.io.Serializable {
 	
 	public void addTeachingUnit(TeachingUnit teachingUnit) {
 		this.teachingUnits.add(teachingUnit);
+		teachingUnit.setSemester(this);
 	}
 	
 	public void removeTeachingUnit(TeachingUnit teachingUnit) {
-		this.teachingUnits.remove(teachingUnit);
+		if( this.teachingUnits.remove(teachingUnit) )
+			teachingUnit.setSemester(null);
 	}
 }

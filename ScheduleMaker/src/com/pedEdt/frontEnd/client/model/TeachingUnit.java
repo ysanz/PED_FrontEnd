@@ -79,9 +79,11 @@ public class TeachingUnit implements java.io.Serializable {
 	
 	public void addModule(Module module) {
 		this.modules.add(module);
+		module.setTeachingUnit(this);
 	}
 	
 	public void removeModule(Module module) {
-		this.modules.remove(module);
+		if( this.modules.remove(module) )
+			module.setTeachingUnit(null);
 	}
 }

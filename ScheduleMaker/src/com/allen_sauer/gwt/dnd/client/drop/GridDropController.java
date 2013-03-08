@@ -5,7 +5,6 @@ import com.allen_sauer.gwt.dnd.client.drop.AbsolutePositionDropController;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-import com.pedEdt.frontEnd.client.controller.ScheduleDragController;
 import com.pedEdt.frontEnd.client.util.DebugPanel;
 import com.pedEdt.frontEnd.client.view.TeachingSeanceWidget;
 import com.pedEdt.frontEnd.client.view.TreeTeachingWidget;
@@ -22,14 +21,6 @@ public class GridDropController extends AbsolutePositionDropController{
 		gridY = (int) Math.floor(dropTarget.getOffsetHeight() / 66);
 	}
 	
-	public void setGridX(int newGridX){
-		gridX = newGridX;
-	}
-	
-	public void setGridY(int newGridY){
-		gridY = newGridY;
-	}
-	
 	public void onDrop(final DragContext context){
 		//super.onDrop(context);
 
@@ -38,9 +29,11 @@ public class GridDropController extends AbsolutePositionDropController{
 		int left=draggableList.get(0).desiredX;
 		Widget widget = context.draggable;
 		
-		left = Math.round((float) left / gridX) * gridX;
+		int posH = Math.round((float) left / gridX);
+		int posV = Math.round((float) top / gridY);
+		left = posH * gridX;
 		left = Math.max(0,left);
-		top = Math.round((float) top / gridY) * gridY;
+		top = posV * gridY;
 		top = Math.max(0,top);
 		
 		// border correction
@@ -49,18 +42,20 @@ public class GridDropController extends AbsolutePositionDropController{
 		
 		//debug
 		DebugPanel.getInstance().vpan.clear();
-		DebugPanel.getInstance().vpan.add(new Label("left = "+left));
-		DebugPanel.getInstance().vpan.add(new Label("top = "+top));
+		DebugPanel.getInstance().vpan.add(new Label("posH = "+posH));
+		DebugPanel.getInstance().vpan.add(new Label("posV = "+posV));
 		//end debug
 		
 		if( widget instanceof TreeTeachingWidget){
-			TeachingSeanceWidget l = new TeachingSeanceWidget("hello");
+			TeachingSeanceWidget l = new TeachingSeanceWidget(((TreeTeachingWidget) widget).getTeaching(),posH,posV);
 			l.setHeight((gridY*8+8)+"px");
 			l.setWidth((gridX-1)+"px");
 			dropTarget.add(l, left, top);
 			draggableList.get(0).positioner.removeFromParent();
 		}
-		else {
+		else if( widget instanceof TeachingSeanceWidget){
+			((TeachingSeanceWidget) widget).setPosH(posH);
+			((TeachingSeanceWidget) widget).setPosV(posV);
 			dropTarget.add(widget, left, top);
 			draggableList.get(0).positioner.removeFromParent();
 		}	
