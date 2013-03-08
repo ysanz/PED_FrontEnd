@@ -1,5 +1,6 @@
 package com.pedEdt.frontEnd.client.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class TeachingUnit implements java.io.Serializable {
 	
 
 	public TeachingUnit() {
-
+		modules = new ArrayList<Module>();
 	}
 
 	public TeachingUnit(String code, String title, Semester semester, List<Module> modules) {

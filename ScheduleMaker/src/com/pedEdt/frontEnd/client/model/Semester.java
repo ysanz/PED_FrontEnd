@@ -1,5 +1,6 @@
 package com.pedEdt.frontEnd.client.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Semester implements java.io.Serializable {
@@ -15,7 +16,7 @@ public class Semester implements java.io.Serializable {
 
 
 	public Semester() {
-
+		teachingUnits = new ArrayList<TeachingUnit>();
 	}
 
 	public Semester(int year, int number, List<TeachingUnit> teachingUnits) {

@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.pedEdt.frontEnd.client.controller.ScheduleDragController;
 import com.pedEdt.frontEnd.client.util.DebugPanel;
 import com.pedEdt.frontEnd.client.view.TeachingSeanceWidget;
-import com.pedEdt.frontEnd.client.view.TeachingTreeWidget;
+import com.pedEdt.frontEnd.client.view.TreeTeachingWidget;
 
 public class GridDropController extends AbsolutePositionDropController{
 	
@@ -37,16 +37,15 @@ public class GridDropController extends AbsolutePositionDropController{
 		int top =draggableList.get(0).desiredY;
 		int left=draggableList.get(0).desiredX;
 		Widget widget = context.draggable;
-
-		//set the 'snapped' top and left position of the widget
-		//left = Math.max(0, Math.min(left, dropTarget.getOffsetWidth() - widget.getOffsetWidth()));
-		//top = Math.max(0, Math.min(top, dropTarget.getOffsetHeight() - widget.getOffsetHeight()));
+		
 		left = Math.round((float) left / gridX) * gridX;
 		left = Math.max(0,left);
 		top = Math.round((float) top / gridY) * gridY;
 		top = Math.max(0,top);
 		
+		// border correction
 		top += top/10;
+		left += 1;
 		
 		//debug
 		DebugPanel.getInstance().vpan.clear();
@@ -54,13 +53,10 @@ public class GridDropController extends AbsolutePositionDropController{
 		DebugPanel.getInstance().vpan.add(new Label("top = "+top));
 		//end debug
 		
-		if( widget instanceof TeachingTreeWidget){
+		if( widget instanceof TreeTeachingWidget){
 			TeachingSeanceWidget l = new TeachingSeanceWidget("hello");
 			l.setHeight((gridY*8+8)+"px");
 			l.setWidth((gridX-1)+"px");
-			l.setStyleName("teaching-cell");
-			l.setHorizontalAlignment(Label.ALIGN_CENTER);
-			ScheduleDragController.getInstance().makeDraggable(l);
 			dropTarget.add(l, left, top);
 			draggableList.get(0).positioner.removeFromParent();
 		}
@@ -89,6 +85,7 @@ public class GridDropController extends AbsolutePositionDropController{
 			DebugPanel.getInstance().vpan.add(new Label("desiredY = "+draggable.desiredY));
 			//end debug
 			
+			//border correction
 			draggable.desiredY -= draggable.desiredY/10;
 
 			draggable.desiredX = (int)Math.floor((double) draggable.desiredX / gridX) * gridX;

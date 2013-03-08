@@ -1,27 +1,8 @@
 package com.pedEdt.frontEnd.client.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-enum TeachingType {
-	COURS("COURS"),
-	EI("EI"),
-	TD("TD"),
-	TP("TP");
-	
-	private final String stringValue;
-	
-	private TeachingType() {
-		stringValue = "";
-	}
-	
-	private TeachingType(final String s) {
-		stringValue = s;
-	}
-	
-	public String toString() {
-		return stringValue;
-	}
-}
 
 public class Teaching implements java.io.Serializable {
 
@@ -44,7 +25,7 @@ public class Teaching implements java.io.Serializable {
 	
 	
 	public Teaching() {
-		
+		sceances = new ArrayList<Integer>();
 	}
 	
 	public Teaching(TeachingType type, String teacher, int nbHour, int nbSeance, int numGroup, List<Integer> sceances, Module module) {
