@@ -18,7 +18,7 @@ public class GridDropController extends AbsolutePositionDropController{
 	public GridDropController(AbsolutePanel dropTarget) {
 		super(dropTarget);
 		gridX = (int) Math.floor(dropTarget.getOffsetWidth() / 5);
-		gridY = (int) Math.floor(dropTarget.getOffsetHeight() / 66);
+		gridY = (int) Math.floor(dropTarget.getOffsetHeight() / 62);
 	}
 	
 	public void onDrop(final DragContext context){
@@ -66,7 +66,7 @@ public class GridDropController extends AbsolutePositionDropController{
 		super.onMove(context);
 
 		gridX = (int) Math.floor(dropTarget.getOffsetWidth() / 5);
-		gridY = (int) Math.floor(dropTarget.getOffsetHeight() / 66);
+		gridY = (int) Math.floor(dropTarget.getOffsetHeight() / 62);
 
 
 		for (Draggable draggable : draggableList) {

@@ -24,28 +24,22 @@ public class Grid extends Composite {
 	    
 	    grid.clear();
 
-        this.setHeight(GRID_HEIGHT + "px");
+        //this.setHeight(GRID_HEIGHT + "px");
 
         float dayWidth = GRID_WIDTH / days;
         float dayLeft = 0f;
-
-        for (int i = 0; i < HOURS_PER_DAY; i++) {
-            //create major interval
-            SimplePanel sp1 = new SimplePanel();
-            sp1.setStyleName("major-time-interval");
-            sp1.setHeight(intervalSize + "px");
-
-            //add to body
-            grid.add(sp1);
-
-            for (int x = 0; x < intervalsPerHour - 1; x++) {
-                SimplePanel sp2 = new SimplePanel();
-                sp2.setStyleName("minor-time-interval");
-
-                sp2.setHeight(intervalSize + "px");
-                grid.add(sp2);
-            }
-        }
+        
+        addSeanceCell();
+        addPauseCell();
+        addSeanceCell();
+        addPauseCell();
+        addSeanceCell();
+        addLunchBreak();
+        addSeanceCell();
+        addPauseCell();
+        addSeanceCell();
+        addPauseCell();
+        addSeanceCell();
 
         for (int day = 0; day < days; day++) {
             dayLeft = dayWidth * day;
@@ -53,6 +47,41 @@ public class Grid extends Composite {
             dayPanel.setStyleName("day-separator");
             grid.add(dayPanel);
             DOM.setStyleAttribute(dayPanel.getElement(), "left", dayLeft + WIDTH_TYPE);
+        }
+	}
+	
+	private void addSeanceCell(){
+		SimplePanel sp1 = new SimplePanel();
+        sp1.setStyleName("major-time-interval");
+        sp1.setHeight(intervalSize + "px");
+        grid.add(sp1);
+        
+        for(int i=0; i<7;i++){
+        	SimplePanel sp2 = new SimplePanel();
+            sp2.setStyleName("minor-time-interval");
+            sp2.setHeight(intervalSize + "px");
+            grid.add(sp2);
+        }
+	}
+	
+	private void addPauseCell(){
+		SimplePanel sp1 = new SimplePanel();
+        sp1.setStyleName("major-time-interval-pause");
+        sp1.setHeight(intervalSize + "px");
+        grid.add(sp1);
+	}
+	
+	private void addLunchBreak(){
+		SimplePanel sp1 = new SimplePanel();
+        sp1.setStyleName("major-time-interval-pause");
+        sp1.setHeight(intervalSize + "px");
+        grid.add(sp1);
+        
+        for(int i=0; i<8;i++){
+        	SimplePanel sp2 = new SimplePanel();
+            sp2.setStyleName("minor-time-interval-pause");
+            sp2.setHeight(intervalSize + "px");
+            grid.add(sp2);
         }
 	}
 

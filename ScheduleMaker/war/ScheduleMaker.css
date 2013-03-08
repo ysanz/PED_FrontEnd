@@ -295,16 +295,15 @@ a:visited {
 	cursor: hand;
 }
 
-/* added*/
+/* ************************************ */
+/*           added                      */
+/* ************************************ */
 
 .major-time-interval {
         display: block;
         height: 9px;
         _height: 10px;
-        /*background: #FFFFCC;*/
         border-top: 1px solid #000000;
-        /*border-left: 1px solid #000000;
-        border-right: 1px solid #000000;*/
         width: 100%;
 }
 
@@ -312,11 +311,26 @@ a:visited {
         display: block;
         height: 9px;
         _height: 10px;
-        /*background: #FFFFCC;*/
         border-top: 1px dotted #000000;
-        /*border-left: 1px solid #000000;
-        border-right: 1px solid #000000;*/
         width: 100%;
+}
+
+.minor-time-interval-pause {
+        display: block;
+        height: 9px;
+        _height: 10px;
+        border-top: 1px dotted #000000;
+        width: 100%;
+        background:#E8EEF7;
+}
+
+.major-time-interval-pause {
+        display: block;
+        height: 9px;
+        _height: 10px;
+        border-top: 1px solid #000000;
+        width: 100%;
+        background:#E8EEF7;
 }
 
 .day-separator {
@@ -354,6 +368,18 @@ a:visited {
         background:#E8EEF7;
 }
 
+.timeline-label{
+	text-align:center;
+	border-top: 1px solid #000000;
+	background:#E8EEF7;
+}
+
+.timeline-label-pause{
+	text-align:center;
+	border-top: 1px solid #000000;
+	background:#E8EEF7;
+}
+
 .teaching-cell {
         border-style:solid;border-width:1px;
         position: absolute;
@@ -361,12 +387,12 @@ a:visited {
         font-family: arial;
         /*border: 1px solid #000;*/
         overflow: hidden;
-        filter: alpha(opacity = 80);
+        /*filter: alpha(opacity = 80);
         opacity: .8;
     	-moz-opacity: .8;
         -webkit-border-radius: 6px;
         -moz-border-radius: 6px;
-        border-radius: 6px;
+        border-radius: 6px;*/
         background:red;
 }
 
