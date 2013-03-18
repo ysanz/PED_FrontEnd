@@ -16,6 +16,7 @@ package com.pedEdt.frontEnd.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.pedEdt.frontEnd.client.controller.ScheduleDragController;
@@ -39,6 +40,7 @@ public class ScheduleMaker implements EntryPoint {
 	protected ScheduleGridPanel schedGridPan;
 	protected ScheduleTreePanel schedTree;
 	protected ScheduleMenuBar schedMenubar;
+	protected Label title;
 	
 	public void onModuleLoad() {
 		vpan = new VerticalPanel();
@@ -90,14 +92,21 @@ public class ScheduleMaker implements EntryPoint {
 		
 		schedTree = new ScheduleTreePanel(semester);
 		
-
 		hpan.add(schedTree);
 		hpan.add(schedGridPan);
 		
 		//debug
 		hpan.add(DebugPanel.getInstance());
+		DebugPanel.getInstance().setVisible(false);
 		//end debug
 		
+		title = new Label("ScheduleMaker");
+		title.setHorizontalAlignment(Label.ALIGN_CENTER);
+		title.setStyleName("application-title");
+		title.setWidth("100%");
+		
+		vpan.setStyleName("center");
+		vpan.add(title);
 		vpan.add(schedMenubar);
 		vpan.add(hpan);
 		RootPanel.get().add(vpan);

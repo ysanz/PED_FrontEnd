@@ -17,5 +17,10 @@ public class TreeTeachingWidget extends Label{
 	public Teaching getTeaching(){
 		return teaching;
 	}
+	
+	public int getLengthOnGrid(){
+		//TODO: compute with nbHours and nbSeances
+		return 8;
+	}
 
 }

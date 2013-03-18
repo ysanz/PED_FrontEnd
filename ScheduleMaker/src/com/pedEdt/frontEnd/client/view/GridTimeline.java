@@ -2,7 +2,6 @@ package com.pedEdt.frontEnd.client.view;
 
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
 
@@ -10,11 +9,6 @@ import com.google.gwt.user.client.ui.Label;
 public class GridTimeline extends Composite {
 
 	private AbsolutePanel timelinePanel;
-	
-	private final int intervalsPerHour = 6;
-	private final int pixelsPerInterval = 10;
-	private final int dayStartAt = 8;
-	private final int HOURS_IN_DAY = 11;
 	
 	public GridTimeline(){
 		timelinePanel = new AbsolutePanel();

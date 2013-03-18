@@ -3,7 +3,6 @@ package com.pedEdt.frontEnd.client.view;
 import com.allen_sauer.gwt.dnd.client.drop.GridDropController;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.Label;
 
 public class ScheduleGridPanel extends Composite {
 	
@@ -20,7 +19,7 @@ public class ScheduleGridPanel extends Composite {
 		mainPan.setCellPadding(0);
 		schedGrid = new Grid();
 		schedTimeline = new GridTimeline();
-		dropController = new GridDropController(schedGrid.getDroppableArea());
+		dropController = new GridDropController(schedGrid);
 		gridDaysHdr = new GridDaysHeader();
 		initWidget(mainPan);
 		mainPan.setWidget(0, 1, gridDaysHdr);

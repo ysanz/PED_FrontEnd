@@ -7,19 +7,12 @@ import java.util.List;
 public class Teaching implements java.io.Serializable {
 
 	private int id;
-	
 	private TeachingType type;
-	
 	private String teacher;
-	
 	private int nbHour;
-	
 	private int nbSeance;
-	
 	private int numGroup;
-	
 	private List<Integer> sceances;
-	
 	private Module module;
 	
 	

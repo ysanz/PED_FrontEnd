@@ -8,13 +8,9 @@ public class TeachingUnit implements java.io.Serializable {
 
 	
 	private int id;
-	
-	private String code;
-	
+	private String code;	
 	private String title;
-	
 	private Semester semester;
-	
 	private List<Module> modules;
 	
 	

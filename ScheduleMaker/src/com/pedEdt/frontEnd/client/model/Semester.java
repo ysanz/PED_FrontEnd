@@ -6,14 +6,9 @@ import java.util.List;
 public class Semester implements java.io.Serializable {
 
 	private int id;
-	
 	private int year;
-	
 	private int number;
-	
 	private List<TeachingUnit> teachingUnits;
-
-
 
 	public Semester() {
 		teachingUnits = new ArrayList<TeachingUnit>();
@@ -23,8 +18,7 @@ public class Semester implements java.io.Serializable {
 		this.year = year;
 		this.number = number;
 		this.teachingUnits = teachingUnits;
-	}
-	
+	}	
 	
 	public int getId() {
 		return this.id;
